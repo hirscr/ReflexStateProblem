@@ -31,11 +31,11 @@ class State(rx.State):
     def add_msg(self, msg):
         msgs.append(msg)
         if len(msgs) >20:
-            del msgs[0]
+            del self.msgs[0]
 
     def updateConsoleText(self) -> rx.Component:
         self.add_msg(self.get_msg())
-        return rx.List(msgs)
+        return rx.List(self.msgs)
 
 class baseChainState(State):
     msgs: list[str]
