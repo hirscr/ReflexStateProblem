@@ -28,14 +28,14 @@ class State(rx.State):
             blurb = blurb + self.block_height
         return blurb
 
-    def add_msg(self, msglist, msg):
-        msglist.append(msg)
-        if len(msglist) >20:
-            del msglist[0]
+    def add_msg(self, msg):
+        msgs.append(msg)
+        if len(msgs) >20:
+            del msgs[0]
 
-    def updateConsoleText(self,msglist) -> rx.Component:
-        self.add_msg(msglist, self.get_msg())
-        return rx.List(msglist)
+    def updateConsoleText(self) -> rx.Component:
+        self.add_msg(self.get_msg())
+        return rx.List(msgs)
 
 class baseChainState(State):
     msgs: list[str]
